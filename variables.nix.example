@@ -1,0 +1,18 @@
+# ── 使用者變數範本 ──────────────────────────────────────────────────
+# 複製此檔案為 variables.nix 並修改設定值：
+#   cp variables.nix.example variables.nix
+#
+# variables.nix 已加入 .gitignore，不會被 commit。
+# ────────────────────────────────────────────────────────────────────
+{
+  username        = "user";           # 系統使用者名稱（需與 Fedora 上的帳號一致）
+  hostname        = "fedora";         # 主機名稱
+  homeDirectory   = "/home/user";     # 使用者家目錄
+
+  editor = "vim";                    # 預設編輯器（vim / nvim / nano ...）
+
+  git = {
+    name  = "Your Name";              # git commit 顯示名稱
+    email = "your@email.com";         # git commit 信箱
+  };
+}
