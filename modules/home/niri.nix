@@ -1,6 +1,17 @@
 { config, pkgs, lib, ... }:
 
 {
+  # ── DankMaterialShell systemd 服務的環境變數 override ─────────────
+  # dms 是由 Fedora 套件自帶的 /usr/lib/systemd/user/dms.service 啟動
+  # 不要直接改 /usr/lib 底下那個檔案（套件升級會蓋掉）
+  # 使用 drop-in 疊加環境變數
+  # 目的：避免 fcitx5 附加到 dms 自己的 QML 輸入框、搶輸入焦點。
+  xdg.configFile."systemd/user/dms.service.d/fcitx5-override.conf".text = ''
+    [Service]
+    Environment=QT_IM_MODULE=none
+    Environment=XMODIFIERS=@im=none
+  '';
+
   # ── XDG Desktop Portal 選擇順序 ──────────────────────────────────
   # 後端套件（xdg-desktop-portal-gtk / -gnome）由 dnf 安裝
   # （見 ../../system/bootstrap.sh），這裡只管哪個後端優先。
@@ -125,10 +136,8 @@
     // ── 啟動時執行 ──────────────────────────────────────────────
     // fcitx5、xwayland-satellite、polkit 認證代理都由 dnf 裝到系統層
     // （見 ../../system/bootstrap.sh），niri 只負責在自己的 session 裡
-    // 把它們啟動起來。DankMaterialShell（dms）由官方安裝腳本裝好，
-    // 這裡關掉輸入法附加到 dms 自己 QML 介面上，避免搶輸入焦點。
+    // 把它們啟動起來。
     spawn-at-startup "fcitx5" "-d" "--replace"
-    spawn-at-startup "sh" "-c" "QT_IM_MODULE=none XMODIFIERS=@im=none dms run"
     spawn-at-startup "xwayland-satellite"
     spawn-at-startup "/usr/libexec/polkit-gnome-authentication-agent-1"
 
