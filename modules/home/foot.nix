@@ -25,6 +25,17 @@
         alternate-scroll-mode = "yes";
       };
 
+      # foot 鍵位對調右鍵與中鍵
+      # 另外綁 primary-paste
+      #
+      # ref> https://man.archlinux.org/man/foot.ini.5
+      #
+      mouse-bindings = {
+        primary-paste   = "Shift+BTN_RIGHT";
+        select-extend   = "BTN_MIDDLE";
+        clipboard-paste = "BTN_RIGHT";
+      };
+
       # 新版 foot 把 [colors] 拆成 [colors-dark]/[colors-light]
       colors-dark = {
         alpha  = "0.85";
