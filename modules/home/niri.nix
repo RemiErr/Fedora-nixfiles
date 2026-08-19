@@ -44,6 +44,11 @@
         warp-mouse-to-focus
     }
 
+    // ── 螢幕開關事件 ──────────────────────────────────────────────
+    switch-events {
+        lid-close { spawn "dms" "ipc" "call" "lock" "lock"; }
+    }
+
     // ── 環境變數（只套用到 niri 這個 session）─────────────────────
     // 最小安裝、沒有 GNOME，niri 是唯一的圖形 session，但這裡的變數
     // 只會傳給 niri 自己啟動的行程，不會外溢到 TTY 登入殼層或
