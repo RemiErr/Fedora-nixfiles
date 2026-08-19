@@ -25,7 +25,8 @@
         alternate-scroll-mode = "yes";
       };
 
-      colors = {
+      # 新版 foot 把 [colors] 拆成 [colors-dark]/[colors-light]
+      colors-dark = {
         alpha  = "0.85";
         cursor = "141311 FFB4AB";  # text-on-cursor  cursor-bg
 
