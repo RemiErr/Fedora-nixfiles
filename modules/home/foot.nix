@@ -31,7 +31,7 @@
       # ref> https://man.archlinux.org/man/foot.ini.5
       #
       mouse-bindings = {
-        primary-paste   = "Shift+BTN_RIGHT";
+        primary-paste   = "none";
         select-extend   = "BTN_MIDDLE";
         clipboard-paste = "BTN_RIGHT";
       };
