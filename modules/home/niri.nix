@@ -188,87 +188,83 @@
     binds {
         // ── 應用程式 ─────────────────────────────────────────
         Mod+Return  { spawn "foot"; }
-        Mod+D       { spawn-sh "dms ipc call spotlight toggle"; }
-        Mod+Ctrl+L  { spawn-sh "dms ipc call lock lock"; }
-        Mod+Shift+E { spawn-sh "dms ipc call powermenu toggle"; }
-        Mod+N       { spawn-sh "dms ipc call notifications toggle"; }
+        Mod+Space     hotkey-overlay-title="功能選單" { spawn-sh "dms ipc call spotlight toggle"; }
+        Mod+Ctrl+L     hotkey-overlay-title="鎖屏（Lock）" { spawn-sh "dms ipc call lock lock"; }
+        Mod+Ctrl+P     hotkey-overlay-title="電源選單（Power Menu）" { spawn-sh "dms ipc call powermenu toggle"; }
+        Mod+N             hotkey-overlay-title="通知（Notifications）" { spawn-sh "dms ipc call notifications toggle"; }
 
         // 截圖（grim + slurp）
-        Print           { screenshot; }
-        Ctrl+Print      { screenshot-screen; }
-        Alt+Print       { screenshot-window; }
-        Mod+Shift+S     { spawn "sh" "-c" "grim -g \"$(slurp)\" - | swappy -f -"; }
+        Print          hotkey-overlay-title="截圖" { screenshot; }
+        Ctrl+Print     hotkey-overlay-title="全螢幕截圖" { screenshot-screen; }
+        Alt+Print      hotkey-overlay-title="視窗截圖" { screenshot-window; }
+        Mod+Shift+S    hotkey-overlay-title="選取範圍截圖" { spawn "sh" "-c" "grim -g \"$(slurp)\" - | swappy -f -"; }
 
         // 剪貼簿歷史（DankMaterialShell 內建）
-        Mod+V { spawn-sh "dms ipc call clipboard toggle"; }
+        Mod+V hotkey-overlay-title="剪貼簿歷史" { spawn-sh "dms ipc call clipboard toggle"; }
 
         // ── 視窗焦點（vim 鍵 + 方向鍵）──────────────────────
-        Mod+H           { focus-column-left; }
-        Mod+L           { focus-column-right; }
-        Mod+J           { focus-window-down; }
-        Mod+K           { focus-window-up; }
-        Mod+Left        { focus-column-left; }
-        Mod+Right       { focus-column-right; }
-        Mod+Down        { focus-window-down; }
-        Mod+Up          { focus-window-up; }
+        Mod+Left         hotkey-overlay-title="聚焦左邊視窗" { focus-column-left; }
+        Mod+Right      hotkey-overlay-title="聚焦右邊視窗" { focus-column-right; }
+        Mod+Down      hotkey-overlay-title="聚焦下面視窗" { focus-window-down; }
+        Mod+Up           hotkey-overlay-title="聚焦上面視窗" { focus-window-up; }
 
         // 焦點跳到欄首/欄尾
-        Mod+Home        { focus-column-first; }
-        Mod+End         { focus-column-last; }
+        Mod+Home       hotkey-overlay-title="焦點跳到欄首" { focus-column-first; }
+        Mod+End           hotkey-overlay-title="焦點跳到欄尾" { focus-column-last; }
 
         // ── 視窗移動 ─────────────────────────────────────────
-        Mod+Shift+H     { move-column-left; }
-        Mod+Shift+L     { move-column-right; }
-        Mod+Shift+J     { move-window-down; }
-        Mod+Shift+K     { move-window-up; }
-        Mod+Shift+Left  { move-column-left; }
-        Mod+Shift+Right { move-column-right; }
-        Mod+Shift+Down  { move-window-down; }
-        Mod+Shift+Up    { move-window-up; }
+        Mod+Shift+Left     { move-column-left; }
+        Mod+Shift+Right     { move-column-right; }
+        Mod+Shift+Down     { move-window-down; }
+        Mod+Shift+Up     { move-window-up; }
         Mod+Shift+Home  { move-column-to-first; }
         Mod+Shift+End   { move-column-to-last; }
 
         // ── 視窗大小 ─────────────────────────────────────────
         Mod+R           { switch-preset-column-width; }
         Mod+Shift+R     { reset-window-height; }
-        Mod+F           { maximize-column; }
-        Mod+Shift+F     { fullscreen-window; }
-        Mod+C           { center-column; }
+        Mod+F          hotkey-overlay-title="最大化視窗" { maximize-column; }
+        Mod+Shift+F    hotkey-overlay-title="全螢幕視窗" { fullscreen-window; }
+        Mod+C          hotkey-overlay-title="置中視窗" { center-column; }
         Mod+Minus       { set-column-width "-10%"; }
         Mod+Equal       { set-column-width "+10%"; }
         Mod+Shift+Minus { set-window-height "-10%"; }
         Mod+Shift+Equal { set-window-height "+10%"; }
 
         // ── 視窗管理 ─────────────────────────────────────────
-        Mod+Q           { close-window; }
-        Mod+T           { toggle-window-floating; }
-        Mod+Shift+C     { consume-window-into-column; }
-        Mod+Shift+X     { expel-window-from-column; }
+        Mod+Q              hotkey-overlay-title="關閉視窗" { close-window; }
+        Mod+T               hotkey-overlay-title="切換浮動視窗" { toggle-window-floating; }
+        Mod+Shift+C    hotkey-overlay-title="排序置中視窗" { consume-window-into-column; }
+        Mod+X               hotkey-overlay-title="取消置中視窗" { expel-window-from-column; }
 
         // ── 工作區 ───────────────────────────────────────────
-        Mod+1           { focus-workspace 1; }
-        Mod+2           { focus-workspace 2; }
-        Mod+3           { focus-workspace 3; }
-        Mod+4           { focus-workspace 4; }
-        Mod+5           { focus-workspace 5; }
-        Mod+6           { focus-workspace 6; }
-        Mod+7           { focus-workspace 7; }
-        Mod+8           { focus-workspace 8; }
-        Mod+9           { focus-workspace 9; }
-        Mod+Shift+1     { move-column-to-workspace 1; }
-        Mod+Shift+2     { move-column-to-workspace 2; }
-        Mod+Shift+3     { move-column-to-workspace 3; }
-        Mod+Shift+4     { move-column-to-workspace 4; }
-        Mod+Shift+5     { move-column-to-workspace 5; }
-        Mod+Shift+6     { move-column-to-workspace 6; }
-        Mod+Shift+7     { move-column-to-workspace 7; }
-        Mod+Shift+8     { move-column-to-workspace 8; }
-        Mod+Shift+9     { move-column-to-workspace 9; }
-        Mod+Tab         { focus-workspace-previous; }
-        Mod+Page_Down   { focus-workspace-down; }
-        Mod+Page_Up     { focus-workspace-up; }
-        Mod+Ctrl+Down   { move-column-to-workspace-down; }
-        Mod+Ctrl+Up     { move-column-to-workspace-up; }
+        Mod+1          hotkey-overlay-title="聚焦工作區 1" { focus-workspace 1; }
+        Mod+2          hotkey-overlay-title="聚焦工作區 2" { focus-workspace 2; }
+        Mod+3          hotkey-overlay-title="聚焦工作區 3" { focus-workspace 3; }
+        Mod+4          hotkey-overlay-title="聚焦工作區 4" { focus-workspace 4; }
+        Mod+5          hotkey-overlay-title="聚焦工作區 5" { focus-workspace 5; }
+        Mod+6          hotkey-overlay-title="聚焦工作區 6" { focus-workspace 6; }
+        Mod+7          hotkey-overlay-title="聚焦工作區 7" { focus-workspace 7; }
+        Mod+8          hotkey-overlay-title="聚焦工作區 8" { focus-workspace 8; }
+        Mod+9          hotkey-overlay-title="聚焦工作區 9" { focus-workspace 9; }
+        Mod+Shift+1    hotkey-overlay-title="移動到工作區 1" { move-column-to-workspace 1; }
+        Mod+Shift+2    hotkey-overlay-title="移動到工作區 2" { move-column-to-workspace 2; }
+        Mod+Shift+3    hotkey-overlay-title="移動到工作區 3" { move-column-to-workspace 3; }
+        Mod+Shift+4    hotkey-overlay-title="移動到工作區 4" { move-column-to-workspace 4; }
+        Mod+Shift+5    hotkey-overlay-title="移動到工作區 5" { move-column-to-workspace 5; }
+        Mod+Shift+6    hotkey-overlay-title="移動到工作區 6" { move-column-to-workspace 6; }
+        Mod+Shift+7    hotkey-overlay-title="移動到工作區 7" { move-column-to-workspace 7; }
+        Mod+Shift+8    hotkey-overlay-title="移動到工作區 8" { move-column-to-workspace 8; }
+        Mod+Shift+9    hotkey-overlay-title="移動到工作區 9" { move-column-to-workspace 9; }
+        Mod+Tab        hotkey-overlay-title="切換工作區" { focus-workspace-previous; }
+        Mod+Page_Down hotkey-overlay-title="聚焦下一個工作區"  { focus-workspace-down; }
+        Mod+Page_Up      hotkey-overlay-title="聚焦上一個工作區" { focus-workspace-up; }
+        Mod+Ctrl+Down   hotkey-overlay-title="移動到下一個工作區" { move-column-to-workspace-down; }
+        Mod+Ctrl+Up        hotkey-overlay-title="移動到上一個工作區" { move-column-to-workspace-up; }
+        Mod+WheelScrollDown cooldown-ms=150 hotkey-overlay-title="聚焦下一個工作區" { focus-workspace-down; }
+        Mod+WheelScrollUp   cooldown-ms=150 hotkey-overlay-title="聚焦上一個工作區" { focus-workspace-up; }
+        Mod+Ctrl+WheelScrollDown cooldown-ms=150 hotkey-overlay-title="移動到下一個工作區" { move-column-to-workspace-down; }
+        Mod+Ctrl+WheelScrollUp   cooldown-ms=150 hotkey-overlay-title="移動到上一個工作區" { move-column-to-workspace-up; }
 
         // ── 系統媒體 / 音量 / 亮度（DankMaterialShell IPC）────
         XF86AudioRaiseVolume  allow-when-locked=true { spawn-sh "dms ipc call audio increment"; }
